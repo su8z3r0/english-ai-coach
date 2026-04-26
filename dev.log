@@ -10,3 +10,15 @@ Port 5174 is in use, trying another one...
   [32m➜[39m  [1mLocal[22m:   [36mhttp://localhost:[1m5175[22m/[39m
 [2m  [32m➜[39m  [1mNetwork[22m[2m: use [22m[1m--host[22m[2m to expose[22m
 [2m11:25:52[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/App.vue, /src/style.css[22m
+[2m11:58:34[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/style.css, /src/views/RolePlayView.vue[22m
+[2m11:59:00[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/views/RolePlayView.vue, /src/style.css[22m
+[2m11:59:16[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/views/RolePlayView.vue, /src/style.css[22m
+[2m11:59:31[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/views/HomeView.vue, /src/style.css[22m
+[2m11:59:43[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/views/HomeView.vue, /src/style.css[22m
+[2m12:00:21[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/views/HomeView.vue, /src/style.css[22m
+[2m12:00:38[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/views/HomeView.vue, /src/style.css[22m
+[2m12:00:51[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/views/HomeView.vue, /src/style.css[22m
+[2m12:00:56[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/views/HomeView.vue, /src/style.css[22m
+[2m12:53:58[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/App.vue, /src/style.css[22m
+[2m12:58:42[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/App.vue, /src/style.css[22m
+[2m12:58:52[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/App.vue, /src/style.css[22m

@@ -31,7 +31,6 @@ const trackerUrl = (typeof location !== 'undefined' && (location.port === '5174'
         </div>
         <a
           :href="trackerUrl"
-          target="_blank"
           class="text-sm font-medium text-slate-600 hover:text-blue-600 transition-colors"
         >
           DevTrack Academy
