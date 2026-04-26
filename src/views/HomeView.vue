@@ -1,13 +1,14 @@
 <script setup lang="ts">
 import { ref, onMounted, computed } from 'vue';
-import { loadSettings, getDailyProgress, type DailyProgress } from '../composables/useProgress';
+import { loadSettings, saveSettings, getDailyProgress, type DailyProgress } from '../composables/useProgress';
 
 const emit = defineEmits<{
   (e: 'start-shadowing'): void;
   (e: 'start-roleplay'): void;
 }>();
 
-const settings = ref<{ level: string; preferredExercise: string }>({ level: 'A1', preferredExercise: 'shadowing' });
+import type { UserSettings } from '../types';
+const settings = ref<UserSettings>({ level: 'A1', preferredExercise: 'shadowing' });
 const progress = ref<DailyProgress[]>([]);
 const currentStreak = ref(0);
 
@@ -31,10 +32,32 @@ function getLevelLabel(level: string) {
 }
 
 const totalExercises = computed(() => progress.value.reduce((s, d) => s + d.exercises, 0));
+
+function setLevel(lvl: UserSettings['level']) {
+  settings.value.level = lvl;
+  saveSettings(settings.value);
+}
 </script>
 
 <template>
   <div class="space-y-8">
+    <!-- Level selector -->
+    <div class="flex flex-wrap gap-2">
+      <button
+        v-for="lvl in (['A1', 'A2', 'B1', 'B2', 'tech'] as const)"
+        :key="lvl"
+        @click="setLevel(lvl)"
+        :class="[
+          'px-3 py-1.5 rounded-full text-xs font-medium transition-colors',
+          settings.level === lvl
+            ? 'bg-blue-600 text-white'
+            : 'bg-white border border-slate-200 text-slate-600 hover:bg-slate-50'
+        ]"
+      >
+        {{ getLevelLabel(lvl) }}
+      </button>
+    </div>
+
     <!-- Stats -->
     <div class="grid grid-cols-3 gap-4">
       <div class="bg-white rounded-xl border border-slate-200 p-4 text-center">

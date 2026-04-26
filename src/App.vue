@@ -9,6 +9,11 @@ const currentView = ref<'home' | 'shadowing' | 'roleplay'>('home');
 function goHome() {
   currentView.value = 'home';
 }
+
+// Link dinamico: dev = altra porta, produzione = nginx
+const trackerUrl = (typeof location !== 'undefined' && (location.port === '5174' || location.port === '5175'))
+  ? 'http://localhost:5173/'
+  : 'http://localhost:8000/';
 </script>
 
 <template>
@@ -24,6 +29,13 @@ function goHome() {
             <p class="text-xs text-slate-500">Allenati a parlare in inglese</p>
           </div>
         </div>
+        <a
+          :href="trackerUrl"
+          target="_blank"
+          class="text-sm font-medium text-slate-600 hover:text-blue-600 transition-colors"
+        >
+          DevTrack Academy
+        </a>
         <button
           v-if="currentView !== 'home'"
           @click="goHome"

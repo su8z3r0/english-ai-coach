@@ -13,14 +13,37 @@ const selectedScenario = ref<RolePlayScenario | null>(null);
 const messages = ref<{ text: string; isUser: boolean }[]>([]);
 const isLoading = ref(false);
 const scenarioList = ref<RolePlayScenario[]>([]);
+const selectedCategory = ref<string>('all');
 
 const { cancel } = useSpeech();
 const { isTranscribing, transcribe } = useWhisper();
 
+const categories = ['all', 'daily', 'travel', 'work', 'social', 'tech'];
+
+const categoryLabels: Record<string, string> = {
+  all: 'Tutti',
+  daily: 'Quotidiano',
+  travel: 'Viaggio',
+  work: 'Lavoro',
+  social: 'Sociale',
+  tech: 'Tecnico',
+};
+
 onMounted(async () => {
   settings.value = await loadSettings();
-  scenarioList.value = rolePlayScenarios.filter(s => s.level === settings.value.level);
+  filterScenarios();
 });
+
+function filterScenarios() {
+  let list = rolePlayScenarios;
+  if (settings.value.level !== 'tech') {
+    list = list.filter(s => s.level === settings.value.level || s.level === 'tech');
+  }
+  if (selectedCategory.value !== 'all') {
+    list = list.filter(s => s.category === selectedCategory.value);
+  }
+  scenarioList.value = list;
+}
 
 function selectScenario(scenario: RolePlayScenario) {
   selectedScenario.value = scenario;
@@ -92,6 +115,24 @@ function backToScenarios() {
     <!-- Scenario selection -->
     <div v-if="!selectedScenario">
       <h2 class="text-xl font-bold text-slate-900 mb-4">Scegli uno scenario — Livello {{ settings.level }}</h2>
+
+      <!-- Category filter -->
+      <div class="flex flex-wrap gap-2 mb-6">
+        <button
+          v-for="cat in categories"
+          :key="cat"
+          @click="selectedCategory = cat; filterScenarios()"
+          :class="[
+            'px-3 py-1.5 rounded-full text-xs font-medium transition-colors',
+            selectedCategory === cat
+              ? 'bg-purple-600 text-white'
+              : 'bg-white border border-slate-200 text-slate-600 hover:bg-slate-50'
+          ]"
+        >
+          {{ categoryLabels[cat] }}
+        </button>
+      </div>
+
       <div class="grid gap-4 md:grid-cols-2">
         <button
           v-for="s in scenarioList"
