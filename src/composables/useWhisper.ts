@@ -1,5 +1,7 @@
 import { ref } from 'vue';
 
+const API_URL = (typeof import.meta !== 'undefined' && (import.meta as any).env?.VITE_API_URL) || 'http://localhost:3002';
+
 const isTranscribing = ref(false);
 const transcript = ref('');
 
@@ -9,34 +11,49 @@ export function useWhisper() {
     transcript.value = '';
 
     try {
-      // Proviamo prima Web Speech API (gratis, locale, veloce)
+      // Prima: prova il proxy backend Whisper (qualità migliore)
+      const proxyResult = await transcribeViaProxy(audioBlob);
+      if (proxyResult && proxyResult.trim().length > 2) {
+        transcript.value = proxyResult;
+        return proxyResult;
+      }
+    } catch {
+      // fallback a Web Speech API
+    }
+
+    try {
+      // Fallback: Web Speech API (gratis, locale)
       const webResult = await transcribeWithWebSpeech(audioBlob);
       if (webResult && webResult.trim().length > 2) {
         transcript.value = webResult;
         return webResult;
       }
     } catch {
-      // fallback
+      // nient'altro da fare
     }
 
-    // Se Web Speech non funziona, proviamo OpenAI Whisper API
-    // (richiede API key impostata nelle settings)
-    const settings = JSON.parse(localStorage.getItem('ec-settings') || '{}');
-    if (settings.openAiKey) {
-      try {
-        const apiResult = await transcribeWithOpenAI(audioBlob, settings.openAiKey);
-        transcript.value = apiResult;
-        return apiResult;
-      } catch {
-        // fallback a placeholder
-      }
-    }
-
-    transcript.value = '[Trascrizione non disponibile. Verifica il microfono o imposta una API key OpenAI.]'
+    transcript.value = '[Trascrizione non disponibile. Verifica che il backend english-coach-api sia avviato (docker-compose up english-coach-api).]'
     return transcript.value;
   }
 
   return { isTranscribing, transcript, transcribe };
+}
+
+async function transcribeViaProxy(audioBlob: Blob): Promise<string> {
+  const formData = new FormData();
+  formData.append('audio', audioBlob, 'audio.webm');
+
+  const res = await fetch(`${API_URL}/api/transcribe`, {
+    method: 'POST',
+    body: formData,
+  });
+
+  if (!res.ok) {
+    const err = await res.json().catch(() => ({}));
+    throw new Error(err.error || `Proxy error ${res.status}`);
+  }
+  const data = await res.json();
+  return data.text || '';
 }
 
 function transcribeWithWebSpeech(_audioBlob: Blob): Promise<string> {
@@ -56,28 +73,9 @@ function transcribeWithWebSpeech(_audioBlob: Blob): Promise<string> {
     rec.onerror = (e: any) => {
       reject(new Error(e.error));
     };
-    // Dato che abbiamo un Blob audio, la Web Speech API nativa
-    // non può processarlo direttamente senza riconoscimento continuo.
-    // Facciamo finta che funzioni con continuous recognition
-    // In produzione reale servirebbe un workaround con AudioContext.
+    // La Web Speech API nativa non può processare un Blob direttamente;
+    // usiamo il continuous recognition come workaround.
     rec.start();
     setTimeout(() => rec.stop(), 5000);
   });
-}
-
-async function transcribeWithOpenAI(audioBlob: Blob, apiKey: string): Promise<string> {
-  const formData = new FormData();
-  formData.append('file', audioBlob, 'audio.webm');
-  formData.append('model', 'whisper-1');
-  formData.append('language', 'en');
-
-  const res = await fetch('https://api.openai.com/v1/audio/transcriptions', {
-    method: 'POST',
-    headers: { Authorization: `Bearer ${apiKey}` },
-    body: formData,
-  });
-
-  if (!res.ok) throw new Error(`OpenAI error ${res.status}`);
-  const data = await res.json();
-  return data.text || '';
 }

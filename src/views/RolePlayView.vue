@@ -34,29 +34,17 @@ async function onUserMessage(blob: Blob) {
   await getAIResponse(text);
 }
 
+const API_URL = (typeof import.meta !== 'undefined' && (import.meta as any).env?.VITE_API_URL) || 'http://localhost:3002';
+
 async function getAIResponse(userText: string) {
   isLoading.value = true;
   const scenario = selectedScenario.value!;
-  const apiKey = settings.value.openAiKey;
-
-  if (!apiKey) {
-    messages.value.push({
-      text: 'Per usare il role-play con AI, inserisci la tua API key OpenAI nelle impostazioni. Per ora puoi esercitarti con lo Shadowing.',
-      isUser: false,
-    });
-    isLoading.value = false;
-    return;
-  }
 
   try {
-    const res = await fetch('https://api.openai.com/v1/chat/completions', {
+    const res = await fetch(`${API_URL}/api/chat`, {
       method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        Authorization: `Bearer ${apiKey}`,
-      },
+      headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
-        model: 'gpt-4o-mini',
         messages: [
           { role: 'system', content: scenario.systemPrompt },
           { role: 'assistant', content: scenario.firstMessage },
@@ -65,14 +53,13 @@ async function getAIResponse(userText: string) {
             content: m.text,
           })),
         ],
-        max_tokens: 150,
         temperature: 0.8,
       }),
     });
 
-    if (!res.ok) throw new Error(`OpenAI error ${res.status}`);
+    if (!res.ok) throw new Error(`API error ${res.status}`);
     const data = await res.json();
-    const reply = data.choices?.[0]?.message?.content?.trim() || '...';
+    const reply = data.reply || '...';
     messages.value.push({ text: reply, isUser: false });
 
     await saveRecord({
@@ -85,7 +72,7 @@ async function getAIResponse(userText: string) {
     });
   } catch {
     messages.value.push({
-      text: 'Mi dispiace, c\'è stato un errore di connessione con l\'AI. Riprova tra poco.',
+      text: 'Mi dispiace, c\'è stato un errore di connessione con l\'AI. Verifica che il backend sia avviato.',
       isUser: false,
     });
   } finally {
