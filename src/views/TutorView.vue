@@ -6,6 +6,7 @@ import ChatBubble from '../components/ChatBubble.vue';
 import VoiceInput from '../components/VoiceInput.vue';
 import CorrectionBubble from '../components/CorrectionBubble.vue';
 import TutorTopicSelector from '../components/TutorTopicSelector.vue';
+import AnimatedTutor from '../components/AnimatedTutor.vue';
 
 const emit = defineEmits<{
   (e: 'back'): void;
@@ -26,6 +27,14 @@ const {
 const { isSpeaking } = useSpeech();
 const showSelector = ref(true);
 const chatContainer = ref<HTMLDivElement | null>(null);
+const tutorListening = ref(false);
+
+const tutorState = computed(() => {
+  if (isSpeaking.value) return 'speaking';
+  if (isLoading.value) return 'thinking';
+  if (tutorListening.value) return 'listening';
+  return 'idle';
+});
 
 function onStart(topic: string, level: string) {
   showSelector.value = false;
@@ -35,6 +44,14 @@ function onStart(topic: string, level: string) {
 function onNewTopic() {
   endSession();
   showSelector.value = true;
+}
+
+function onListening() {
+  tutorListening.value = true;
+}
+
+function onStopped() {
+  tutorListening.value = false;
 }
 
 async function onTranscript(text: string) {
@@ -110,6 +127,11 @@ const currentLevel = computed(() => {
         </button>
       </div>
 
+      <!-- Tutor Avatar -->
+      <div class="bg-white/80 backdrop-blur-sm border-b border-slate-200 py-2 flex justify-center shrink-0">
+        <AnimatedTutor :state="tutorState" />
+      </div>
+
       <!-- Messages Area -->
       <div
         ref="chatContainer"
@@ -167,7 +189,11 @@ const currentLevel = computed(() => {
 
       <!-- Input Bar (stile WhatsApp) -->
       <div class="bg-slate-100 border-t border-slate-200 px-4 py-3 shrink-0">
-        <VoiceInput @transcript="onTranscript" />
+        <VoiceInput
+          @transcript="onTranscript"
+          @listening="onListening"
+          @stopped="onStopped"
+        />
       </div>
     </template>
   </div>

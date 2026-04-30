@@ -4,6 +4,8 @@ import { useSpeechRecognition } from '../composables/useSpeechRecognition';
 
 const emit = defineEmits<{
   (e: 'transcript', text: string): void;
+  (e: 'listening'): void;
+  (e: 'stopped'): void;
 }>();
 
 const { isListening, interimTranscript, startListening, stopListening } = useSpeechRecognition();
@@ -24,11 +26,13 @@ function start() {
   if (isListening.value) return;
   error.value = '';
   console.log('[VoiceInput] start called');
+  emit('listening');
   try {
     listeningPromise = startListening();
   } catch (err: any) {
     error.value = err.message || 'Speech recognition failed';
     console.error('[VoiceInput] start error:', err);
+    emit('stopped');
     touchHandled.value = false;
   }
 }
@@ -50,7 +54,10 @@ async function stop() {
       error.value = err.message || 'Speech recognition failed';
     } finally {
       listeningPromise = null;
+      emit('stopped');
     }
+  } else {
+    emit('stopped');
   }
 
   // reset touch flag dopo un breve delay
