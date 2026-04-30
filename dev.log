@@ -23,3 +23,33 @@ Port 5174 is in use, trying another one...
 [2m12:58:42[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/App.vue, /src/style.css[22m
 [2m12:58:52[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/App.vue, /src/style.css[22m
 [2m13:12:14[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/App.vue, /src/style.css[22m
+[2m18:36:00[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/style.css[22m
+[2m18:36:14[22m [36m[1m[vite][22m[39m [32mpage reload [39m[2msrc/main.ts[22m
+[2m19:37:38[22m [36m[1m[vite][22m[39m [32mpage reload [39m[2msrc/types.ts[22m
+[2m19:38:43[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/style.css, /src/views/HomeView.vue, /src/views/RolePlayView.vue, /src/views/ShadowingView.vue[22m
+[2m19:58:24[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/components/AudioRecorder.vue, /src/style.css[22m
+[2m19:59:07[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/components/AudioRecorder.vue, /src/style.css[22m
+[2m21:13:03[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/App.vue, /src/style.css[22m
+[2m21:22:30[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/components/AudioRecorder.vue, /src/style.css[22m
+[2m21:23:03[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/components/ChatBubble.vue, /src/style.css[22m
+[2m21:52:38[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/App.vue, /src/style.css[22m
+[2m21:52:55[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/App.vue, /src/style.css[22m
+[2m22:11:54[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/style.css, /src/views/TutorView.vue[22m
+[2m22:11:55[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/style.css, /src/views/TutorView.vue[22m
+[2m22:20:53[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/App.vue, /src/style.css[22m
+[2m22:21:08[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/App.vue, /src/style.css[22m
+[2m22:31:06[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/style.css, /src/components/VoiceInput.vue[22m
+[2m22:32:36[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/components/VoiceInput.vue, /src/style.css[22m
+[2m22:33:21[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/components/VoiceInput.vue, /src/style.css[22m
+[2m22:57:46[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/style.css, /src/components/VoiceInput.vue[22m
+[2m22:58:47[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/components/VoiceInput.vue, /src/style.css[22m
+[2m22:59:24[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/components/VoiceInput.vue, /src/style.css[22m
+[2m23:00:01[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/components/VoiceInput.vue, /src/style.css[22m
+[2m08:06:21[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/style.css, /src/views/HomeView.vue, /src/views/RolePlayView.vue, /src/views/ShadowingView.vue, /src/views/ProgressDashboard.vue, /src/views/TutorView.vue[22m
+[2m08:06:47[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/style.css, /src/views/TutorView.vue[22m
+[2m08:08:08[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/style.css, /src/views/TutorView.vue[22m
+[2m08:08:33[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/views/TutorView.vue, /src/style.css[22m
+[2m08:08:51[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/views/TutorView.vue, /src/style.css[22m
+[2m08:26:53[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/App.vue, /src/style.css[22m
+[2m08:33:29[22m [36m[1m[vite][22m[39m [32m.env changed, restarting server...[39m
+[2m08:33:29[22m [36m[1m[vite][22m[39m server restarted.

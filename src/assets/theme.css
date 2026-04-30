@@ -1,0 +1,231 @@
+/* ============================================================
+   DevTrack Academy — Tema "Cream & Ink"
+   ============================================================ */
+
+/* ---------- Google Fonts ---------- */
+@import url('https://fonts.googleapis.com/css2?family=Lora:wght@400;500;600;700&family=Source+Sans+3:wght@400;500;600&display=swap');
+
+/* ---------- Base ---------- */
+html, body, #app, #root, main, .min-h-screen {
+  background-color: #f5f0e8 !important;
+  color: #1a1a14 !important;
+  font-family: 'Source Sans 3', sans-serif !important;
+}
+
+h1, h2, h3, h4 {
+  font-family: 'Lora', Georgia, serif !important;
+  color: #1a1a14 !important;
+}
+
+/* ---------- Header / Navbar ---------- */
+header, nav, [class*="header"] {
+  background-color: #e8e2d6 !important;
+  border-bottom: 1px solid #d9d3c7 !important;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.06) !important;
+}
+header h1, header h2, header span, header a { color: #1a1a14 !important; }
+header p, header .text-sm { color: #4a4438 !important; }
+
+/* ---------- Sfondi Tailwind ---------- */
+.bg-white             { background-color: #ede8de !important; }
+.bg-white\/50,
+.bg-white\/70         { background-color: rgba(237,232,222,0.8) !important; }
+.bg-gray-50           { background-color: #f5f0e8 !important; }
+.bg-gray-100          { background-color: #ede8de !important; }
+.bg-gray-200          { background-color: #ddd8ce !important; }
+.bg-blue-50           { background-color: #eaf0e8 !important; }
+.bg-green-50          { background-color: #e8f0e4 !important; }
+.bg-green-100         { background-color: #daebd4 !important; }
+
+/* ---------- Colori accento ---------- */
+.bg-blue-500,
+.bg-blue-600          { background-color: #2d5a3d !important; }
+.bg-green-500         { background-color: #2d5a3d !important; }
+.bg-amber-600         { background-color: #c07830 !important; }
+.bg-red-600           { background-color: #b83030 !important; }
+
+/* Testo bianco su tutti i bg colorati */
+.bg-blue-500, .bg-blue-600,
+.bg-green-500, .bg-green-700, .bg-green-800, .bg-green-900,
+.bg-amber-600, .bg-red-600 {
+  color: #ffffff !important;
+}
+.bg-blue-500 *, .bg-blue-600 *,
+.bg-green-500 *, .bg-green-700 *, .bg-green-800 *,
+.bg-amber-600 *, .bg-red-600 * {
+  color: #ffffff !important;
+}
+
+/* SVG icons su bottoni colorati */
+.bg-amber-600 svg, .bg-amber-600 svg path,
+.bg-red-600 svg,   .bg-red-600 svg path {
+  stroke: #ffffff !important;
+  color: #ffffff !important;
+}
+
+/* ---------- Testi ---------- */
+.text-gray-900, .text-gray-800, .text-gray-700 { color: #1a1a14 !important; }
+.text-gray-600, .text-gray-500                  { color: #4a4438 !important; }
+.text-gray-400, .text-gray-300                  { color: #7a7065 !important; }
+.text-blue-600, .text-blue-700                  { color: #a05820 !important; }
+.text-green-600, .text-green-700                { color: #1e4a2a !important; }
+.text-white                                     { color: #f5f0e8 !important; }
+.text-2xl, .text-3xl                            { color: #1a1a14 !important; }
+
+/* ---------- Bordi ---------- */
+.border-gray-200,
+.border-gray-200\/50  { border-color: #d9d3c7 !important; }
+.border-blue-200      { border-color: #c07830 !important; }
+
+/* ---------- Hover ---------- */
+.hover\:bg-gray-100:hover   { background-color: #ddd8ce !important; }
+.hover\:bg-gray-50:hover    { background-color: #ede8de !important; }
+.hover\:bg-green-200:hover  { background-color: #1a3a28 !important; }
+.hover\:shadow-md:hover     {
+  box-shadow: 0 6px 20px rgba(192,120,48,0.15) !important;
+  border-color: #c07830 !important;
+}
+.hover\:text-blue-600:hover,
+.group-hover\:text-blue-600 { color: #c07830 !important; }
+.hover\:border-blue-300:hover { border-color: #c07830 !important; }
+
+/* ---------- Tab attivo (filtri categoria) ---------- */
+.bg-blue-600.text-white,
+.bg-blue-500.text-white,
+button.bg-blue-600,
+button.bg-blue-500 {
+  color: #ffffff !important;
+  font-weight: 600 !important;
+}
+
+/* ---------- Progress bar globale ---------- */
+.bg-gradient-to-r,
+.from-blue-500        { background: linear-gradient(to right, #2d5a3d, #4a8a60) !important; }
+.bg-gray-200.rounded-full { background-color: #d9d3c7 !important; }
+
+/* ---------- Badge categorie ---------- */
+.bg-blue-100    { background-color: rgba(192,120,48,0.12) !important; }
+.text-blue-800  { color: #8a4a10 !important; }
+.bg-green-100   { background-color: rgba(45,90,61,0.12) !important; }
+.text-green-800 { color: #1a3a28 !important; }
+.bg-amber-100   { background-color: rgba(192,120,48,0.12) !important; }
+.text-amber-800 { color: #8a5010 !important; }
+.bg-red-100     { background-color: rgba(184,48,48,0.10) !important; }
+.text-red-800   { color: #882020 !important; }
+.bg-purple-100  { background-color: rgba(100,60,160,0.10) !important; }
+.text-purple-800 { color: #5a2a90 !important; }
+.bg-indigo-100  { background-color: rgba(60,80,180,0.10) !important; }
+.text-indigo-800 { color: #3040a0 !important; }
+.bg-teal-100    { background-color: rgba(30,120,100,0.10) !important; }
+.text-teal-800  { color: #1a6050 !important; }
+.bg-pink-100    { background-color: rgba(180,60,100,0.10) !important; }
+.text-pink-800  { color: #901840 !important; }
+.bg-yellow-100  { background-color: rgba(180,150,20,0.12) !important; }
+.text-yellow-800 { color: #806010 !important; }
+.bg-orange-100  { background-color: rgba(200,100,30,0.12) !important; }
+.text-orange-800 { color: #904010 !important; }
+
+/* Badge "Bloccato" */
+.bg-gray-200.text-gray-600 {
+  background-color: #ddd8ce !important;
+  color: #5a5248 !important;
+  font-weight: 500 !important;
+}
+
+/* ---------- Card bloccate ---------- */
+.opacity-75 { opacity: 1 !important; }
+.opacity-75 h3, .opacity-75 p, .opacity-75 span { color: #6a6055 !important; }
+
+/* ---------- Textarea / Input ---------- */
+textarea {
+  background-color: #f5f0e8 !important;
+  border-color: #c8c0b0 !important;
+  color: #1a1a14 !important;
+  font-family: 'Source Sans 3', sans-serif !important;
+}
+textarea::placeholder { color: #b0a898 !important; }
+.focus\:ring-blue-200:focus { --tw-ring-color: rgba(192,120,48,0.25) !important; }
+
+/* ---------- Header modulo di dettaglio (bg-gradient-to-r from-blue-600) ---------- */
+.bg-gradient-to-r.from-blue-600 {
+  background: linear-gradient(135deg, #1e4a2a 0%, #2d6b40 60%, #3a7a50 100%) !important;
+  border-bottom: 3px solid #c07830 !important;
+}
+
+/* Titolo h2 nell'header: bianco puro, bold, leggibile */
+.bg-gradient-to-r.from-blue-600 h2 {
+  color: #ffffff !important;
+  font-weight: 700 !important;
+  font-size: 1.6rem !important;
+  text-shadow: 0 1px 4px rgba(0,0,0,0.35) !important;
+}
+
+/* Tutti i testi nell'header */
+.bg-gradient-to-r.from-blue-600 * {
+  color: rgba(255,255,255,0.9) !important;
+}
+
+/* "← Torna ai moduli" button */
+.text-blue-100 { color: rgba(255,255,255,0.75) !important; }
+.hover\:text-white:hover { color: #ffffff !important; }
+
+/* Progress bar track nell'header: visibile su sfondo verde */
+.bg-blue-800\/30 {
+  background-color: rgba(255,255,255,0.2) !important;
+  height: 7px !important;
+  border-radius: 4px !important;
+}
+.bg-blue-800\/30 > div,
+.bg-blue-800\/30 [class*="bg-"] {
+  background-color: #e8a840 !important;
+  height: 7px !important;
+  border-radius: 4px !important;
+}
+
+/* ---------- Header modulo vecchio (bg-green-700/800/900) ---------- */
+.bg-green-700, .bg-green-800, .bg-green-900 {
+  background: linear-gradient(135deg, #1e4a2a 0%, #2d6b40 60%, #3a7a50 100%) !important;
+  border-bottom: 3px solid #c07830 !important;
+}
+.bg-green-700 h1, .bg-green-800 h1, .bg-green-900 h1,
+.bg-green-700 h2, .bg-green-800 h2, .bg-green-900 h2 {
+  color: #ffffff !important;
+  font-weight: 700 !important;
+  text-shadow: 0 1px 3px rgba(0,0,0,0.4) !important;
+}
+.bg-green-700 *, .bg-green-800 *, .bg-green-900 * { color: rgba(255,255,255,0.92) !important; }
+.bg-green-700 a, .bg-green-800 a { color: rgba(255,255,255,0.75) !important; }
+.bg-green-700 a:hover, .bg-green-800 a:hover { color: #ffffff !important; }
+
+/* ---------- Tab Teoria / Pratica / Terminale / Quiz ---------- */
+/* Tab attivo: sottolineatura ambra */
+.border-b-2.border-blue-600 {
+  border-bottom-color: #c07830 !important;
+  color: #1a1a14 !important;
+}
+/* Tab inattivi */
+.border-b-2.border-transparent {
+  color: #7a7065 !important;
+}
+.border-b-2.border-transparent:hover {
+  color: #1a1a14 !important;
+  border-bottom-color: #d9d3c7 !important;
+}
+
+/* ---------- Barra di ricerca lezioni ---------- */
+input[type="search"], input[type="text"] {
+  background-color: #ede8de !important;
+  border-color: #d9d3c7 !important;
+  color: #1a1a14 !important;
+}
+input[type="search"]::placeholder,
+input[type="text"]::placeholder { color: #b0a898 !important; }
+
+/* ---------- Riga "0/3 completata" ---------- */
+.text-blue-600:not(button):not(a) { color: #2d5a3d !important; }
+
+/* ---------- Scrollbar ---------- */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: #f5f0e8; }
+::-webkit-scrollbar-thumb { background: #c8c0b0; border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: #c07830; }
